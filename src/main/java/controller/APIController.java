@@ -13,13 +13,11 @@ public class APIController {
         this.answerModel = answerModel;
     }
 
-    public AnswerModel requestAPIData (String token) {
+    public AnswerModel requestAPIData(String token) {
 
         Gson gson = new Gson();
 
-        String jsonResponse = Unirest.get("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token="+token).asString().getBody();
-
-        System.out.println("APIController.requestAPIData: "+jsonResponse);
+        String jsonResponse = Unirest.get("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=" + token).asString().getBody();
 
         this.answerModel = gson.fromJson(jsonResponse, AnswerModel.class);
 
