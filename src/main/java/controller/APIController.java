@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import kong.unirest.Unirest;
 import model.AnswerModel;
 
+import java.io.File;
+
 //trabalha apenas com a API
 public class APIController {
 
@@ -24,5 +26,12 @@ public class APIController {
         return this.answerModel;
 
     }
+
+    public void sendPOSTToAPI(String token) {
+        Unirest.post("https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token="+token)
+                .field("answer", new File("answer.json"))
+                .asEmpty();
+    }
+
 
 }
